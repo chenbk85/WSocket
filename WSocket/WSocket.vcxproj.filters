@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="WExport">
+      <UniqueIdentifier>{d238909f-148b-4a44-a6bb-edf5acef219a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform Files">
+      <UniqueIdentifier>{02a6abec-ac29-4cc9-ab47-383ad5cc0449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WExport\WSocket.h">
+      <Filter>WExport</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Platform Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Platform Files\Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Platform Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WExport\WSocketHelper.h">
+      <Filter>WExport</Filter>
+    </ClInclude>
+    <ClInclude Include="WExport\WSocketTypes.h">
+      <Filter>WExport</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WExport\WSocket.cpp">
+      <Filter>WExport</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Platform Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Platform Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WSocket.rc">
+      <Filter>Platform Files\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

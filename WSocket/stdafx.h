@@ -1,0 +1,58 @@
+#pragma once
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//=> Defines
+
+#define WIN32_LEAN_AND_MEAN             
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//=> Includes
+
+#include "targetver.h"
+
+//=> Winsock
+#include <WinSock2.h>
+#include <Mswsock.h>
+#include <WS2tcpip.h>
+
+#include <windows.h>
+#include <stdio.h>
+#include <tchar.h>
+
+//=> Profiling
+#include <profileapi.h>
+#include <Psapi.h>
+
+//=> Std
+#include <string>
+#include <array>
+#include <algorithm>
+#include <vector>
+#include <mutex>
+#include <atomic>
+#include <thread>
+#include <memory>
+#include <exception>
+#include <locale>
+#include <codecvt>
+#include <tuple>
+
+
+//ConcRT
+#include <concurrent_queue.h>
+#include <concurrent_unordered_map.h>
+#include <concurrent_vector.h>
+
+
+//=> Own
+
+#include <WExport/WSocket.h>
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//=> Libs
+
+#pragma comment( lib, "Ws2_32.lib" )
+#pragma comment( lib, "pdh.lib" )

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WSocket", "WSocket\WSocket.vcxproj", "{A1075B36-B3AE-4DE0-AFB2-96E22F95F772}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestServer", "TestServer\TestServer.vcxproj", "{038FE4D1-17A0-4C65-9981-29EFFD96961B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{8DF66A43-F640-4CF6-9B17-D56E6DF4A185}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1075B36-B3AE-4DE0-AFB2-96E22F95F772}.Debug|x64.ActiveCfg = Debug|x64
+		{A1075B36-B3AE-4DE0-AFB2-96E22F95F772}.Debug|x64.Build.0 = Debug|x64
+		{A1075B36-B3AE-4DE0-AFB2-96E22F95F772}.Release|x64.ActiveCfg = Release|x64
+		{A1075B36-B3AE-4DE0-AFB2-96E22F95F772}.Release|x64.Build.0 = Release|x64
+		{038FE4D1-17A0-4C65-9981-29EFFD96961B}.Debug|x64.ActiveCfg = Debug|x64
+		{038FE4D1-17A0-4C65-9981-29EFFD96961B}.Debug|x64.Build.0 = Debug|x64
+		{038FE4D1-17A0-4C65-9981-29EFFD96961B}.Release|x64.ActiveCfg = Release|x64
+		{038FE4D1-17A0-4C65-9981-29EFFD96961B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1075B36-B3AE-4DE0-AFB2-96E22F95F772} = {8DF66A43-F640-4CF6-9B17-D56E6DF4A185}
+	EndGlobalSection
+EndGlobal
