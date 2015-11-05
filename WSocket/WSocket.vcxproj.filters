@@ -11,6 +11,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{6fe8923e-a8e0-4acf-b963-bb1aca0bab7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\MemoryPools">
+      <UniqueIdentifier>{4ceb773b-a320-42b1-97a0-0fbc7bd9d6d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{81785299-2aee-4756-a203-78de7840666f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{004d50b9-a8d8-4b9e-b2d2-e576bbf66f1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Socket">
+      <UniqueIdentifier>{063a9154-387b-4fbc-9b55-187330245812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Helper">
+      <UniqueIdentifier>{85463096-fc40-4c3b-9493-5a81751fcb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Profiler">
+      <UniqueIdentifier>{50bb2f87-fda7-4e00-94ae-f7beeaa00ea9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -31,6 +52,33 @@
     <ClInclude Include="WExport\WSocketTypes.h">
       <Filter>WExport</Filter>
     </ClInclude>
+    <ClInclude Include="Helper\MiscFunctions.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper\MiscClasses.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper\MemoryPools\TNodePool.h">
+      <Filter>Helper\MemoryPools</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper\SpinLock.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="System\System.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Network.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Socket\ServerSocket.h">
+      <Filter>Network\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Helper\WSAHelper.h">
+      <Filter>Network\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler\SystemProfiler.h">
+      <Filter>Profiler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -41,6 +89,18 @@
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Platform Files</Filter>
+    </ClCompile>
+    <ClCompile Include="System\System.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Network.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Socket\ServerSocket.cpp">
+      <Filter>Network\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler\SystemProfiler.cpp">
+      <Filter>Profiler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -3,8 +3,6 @@
 
 int main()
 {
-	WSocket::Test( );
-
 
     return 0;
 }

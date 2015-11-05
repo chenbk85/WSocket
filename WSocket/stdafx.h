@@ -47,6 +47,12 @@
 
 
 //=> Own
+#include "Helper/SpinLock.h"
+#include "Helper/MiscClasses.h"
+#include "Helper/MiscFunctions.h"
+
+
+
 
 #include <WExport/WSocket.h>
 
