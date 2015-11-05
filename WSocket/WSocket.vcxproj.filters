@@ -35,6 +35,9 @@
     <Filter Include="Network\Buffer">
       <UniqueIdentifier>{1ff79d0d-a8ea-4036-9353-6e4d37908d38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="User">
+      <UniqueIdentifier>{78393ff7-d1d8-4495-bba8-f76f86f088ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -88,6 +91,15 @@
     <ClInclude Include="Network\Buffer\BufferPool.h">
       <Filter>Network\Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="User\User.h">
+      <Filter>User</Filter>
+    </ClInclude>
+    <ClInclude Include="User\UserManager.h">
+      <Filter>User</Filter>
+    </ClInclude>
+    <ClInclude Include="WExport\WSocketTemplates.h">
+      <Filter>WExport</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -113,6 +125,12 @@
     </ClCompile>
     <ClCompile Include="Network\Buffer\BufferPool.cpp">
       <Filter>Network\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="User\User.cpp">
+      <Filter>User</Filter>
+    </ClCompile>
+    <ClCompile Include="User\UserManager.cpp">
+      <Filter>User</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

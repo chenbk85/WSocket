@@ -11,6 +11,9 @@
     <Filter Include="TestNetwork">
       <UniqueIdentifier>{cdf197f1-a195-4956-a410-a6219a2d8ce5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{ce5e0804-2c06-4c0b-ade0-28420af32dc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -31,6 +34,9 @@
     <ClInclude Include="TestNetwork\TestUser.h">
       <Filter>TestNetwork</Filter>
     </ClInclude>
+    <ClInclude Include="SocketSystem.h">
+      <Filter>Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -45,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="TestNetwork\TestUser.cpp">
       <Filter>TestNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketSystem.cpp">
+      <Filter>Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

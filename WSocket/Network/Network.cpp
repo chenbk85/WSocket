@@ -10,3 +10,9 @@ CNetwork::~CNetwork( )
 {
 
 }
+
+void CNetwork::CreateNetwork( USHORT uPort )
+{
+	
+
+}

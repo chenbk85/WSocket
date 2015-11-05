@@ -94,8 +94,11 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="User\User.h" />
+    <ClInclude Include="User\UserManager.h" />
     <ClInclude Include="WExport\WSocket.h" />
     <ClInclude Include="WExport\WSocketHelper.h" />
+    <ClInclude Include="WExport\WSocketTemplates.h" />
     <ClInclude Include="WExport\WSocketTypes.h" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +112,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="System\System.cpp" />
+    <ClCompile Include="User\User.cpp" />
+    <ClCompile Include="User\UserManager.cpp" />
     <ClCompile Include="WExport\WSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
