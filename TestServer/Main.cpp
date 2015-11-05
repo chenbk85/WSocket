@@ -13,6 +13,11 @@ int main()
 	}
 
 
+	pSystem->CreateNetwork( );
+
+
+
+	_gettch( );
 
     return 0;
 }
