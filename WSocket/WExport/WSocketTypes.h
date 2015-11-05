@@ -7,7 +7,7 @@ namespace WSocket
 {
 	typedef void* __ptr64 UPacketBuffer;
 
-
+	
 	namespace Internal
 	{
 		__interface INetwork
@@ -54,6 +54,7 @@ namespace WSocket
 	__interface ISystemImpl
 	{
 		virtual void OnLog( const wchar_t* szMessage ) = 0;
+		//virtual void OnCritcalError( IErrorInfo* pInfo ) = 0;
 	};
 
 }
