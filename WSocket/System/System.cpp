@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "System.h"
 
-#include "Network/Helper/WSAHelper.h"
-
 std::unique_ptr< CSystem >	g_sys;
 
 
@@ -12,6 +10,8 @@ CSystem::CSystem( )
 
 CSystem::~CSystem( )
 {
+	//=> Does this cause a deadlock? 
+	WSACleanup( ); 
 }
 
 void CSystem::Initialize( )
@@ -20,7 +20,5 @@ void CSystem::Initialize( )
 	{
 		throw std::runtime_error( "Failed to load WSA" );
 	}
-
-	WSAHelper::Initialize( );
 
 }

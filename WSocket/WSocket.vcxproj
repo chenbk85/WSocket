@@ -84,6 +84,8 @@
     <ClInclude Include="Helper\MiscClasses.h" />
     <ClInclude Include="Helper\MiscFunctions.h" />
     <ClInclude Include="Helper\SpinLock.h" />
+    <ClInclude Include="Network\Buffer\BufferPool.h" />
+    <ClInclude Include="Network\Buffer\NetworkBuffer.h" />
     <ClInclude Include="Network\Helper\WSAHelper.h" />
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\Socket\ServerSocket.h" />
@@ -98,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Network\Buffer\BufferPool.cpp" />
     <ClCompile Include="Network\Network.cpp" />
     <ClCompile Include="Network\Socket\ServerSocket.cpp" />
     <ClCompile Include="Profiler\SystemProfiler.cpp" />

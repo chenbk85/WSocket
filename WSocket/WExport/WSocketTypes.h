@@ -13,7 +13,7 @@ namespace WSocket
 
 	__interface ISystem
 	{
-		virtual bool CreateNetwork( u_short uPort, Internal::INetwork** pNetworkOut ) = 0;
+		virtual bool CreateNetwork( USHORT uPort, Internal::INetwork** pNetworkOut ) = 0;
 		virtual void DestroyNetwork( Internal::INetwork* pNetwork ) = 0;
 
 

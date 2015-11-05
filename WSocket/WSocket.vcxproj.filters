@@ -32,6 +32,9 @@
     <Filter Include="Profiler">
       <UniqueIdentifier>{50bb2f87-fda7-4e00-94ae-f7beeaa00ea9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network\Buffer">
+      <UniqueIdentifier>{1ff79d0d-a8ea-4036-9353-6e4d37908d38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -79,6 +82,12 @@
     <ClInclude Include="Profiler\SystemProfiler.h">
       <Filter>Profiler</Filter>
     </ClInclude>
+    <ClInclude Include="Network\Buffer\NetworkBuffer.h">
+      <Filter>Network\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Buffer\BufferPool.h">
+      <Filter>Network\Buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -101,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Profiler\SystemProfiler.cpp">
       <Filter>Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Buffer\BufferPool.cpp">
+      <Filter>Network\Buffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
