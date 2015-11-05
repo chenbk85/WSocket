@@ -15,7 +15,7 @@ WSOCKET_API bool WSocket::InitializeWSocket( ISystemImpl* pSystemImpl )
 	{
 		std::call_once( s_initFlag, [ & ]{
 			g_sys = std::make_unique< CSystem >( pSystemImpl );
-		} ); 
+		} );
 	}
 	catch( std::exception e )
 	{
