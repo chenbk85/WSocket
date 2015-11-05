@@ -3,7 +3,7 @@
 #include "Profiler/SystemProfiler.h"
 
 
-class CSystem
+class CSystem : public WSocket::Internal::ISystem
 {
 public:
 	CSystem(WSocket::ISystemImpl* pSystemImpl );
@@ -12,12 +12,22 @@ public:
 public:
 	void Initialize( );
 
+public:
+
+	virtual bool CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetworkOut ) override;
+	virtual void DestroyNetwork( WSocket::Internal::INetwork* pNetwork ) override;
+
+	virtual void UpdateSystem( ) override;
+
+
+public:
 	void AddLog( wchar_t* szFormat, ... );
+
 
 public:
 
-
 	inline WSocket::ISystemImpl* GetClientImpl( ) { return m_pSystemImpl; }
+
 
 private:
 	WSADATA					m_wsaData;

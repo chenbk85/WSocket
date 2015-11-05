@@ -1,7 +1,13 @@
 #include "stdafx.h"
 #include "System.h"
 
+
+#include "Network/Network.h"
+
+
+
 std::unique_ptr< CSystem >	g_sys;
+
 
 
 CSystem::CSystem( WSocket::ISystemImpl* pSystemImpl )
@@ -24,6 +30,42 @@ void CSystem::Initialize( )
 	}
 }
 
+
+bool CSystem::CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetworkOut )
+{
+	CNetwork* pNetwork = nullptr;
+
+	try
+	{
+		pNetwork = new CNetwork( );
+
+		pNetwork->CreateNetwork( uPort );
+	}
+	catch( std::exception e )
+	{
+		AddLog( (wchar_t*)char_to_wstring( e.what( ) ).c_str( ) );
+
+		SafeDelete( pNetwork );
+		return false;
+	}
+
+	*pNetworkOut = pNetwork;
+
+	return true;
+}
+
+void CSystem::DestroyNetwork( WSocket::Internal::INetwork* pNetwork )
+{
+	throw std::logic_error( "The method or operation is not implemented." );
+}
+
+void CSystem::UpdateSystem( )
+{
+	throw std::logic_error( "The method or operation is not implemented." );
+}
+
+
+
 void CSystem::AddLog( wchar_t* szFormat, ... )
 {
 	wchar_t szMessage[ 512 ];
@@ -37,3 +79,5 @@ void CSystem::AddLog( wchar_t* szFormat, ... )
 
 	GetClientImpl( )->OnLog( szMessage );
 }
+
+

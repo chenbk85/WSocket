@@ -6,7 +6,7 @@
 
 #include "User\UserManager.h"
 
-class CNetwork
+class CNetwork : public WSocket::Internal::INetwork
 {
 
 public:

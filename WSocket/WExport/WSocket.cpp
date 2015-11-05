@@ -28,3 +28,16 @@ WSOCKET_API bool WSocket::InitializeWSocket( ISystemImpl* pSystemImpl )
 
 	return true;
 }
+
+WSOCKET_API bool WSocket::GetSystem( Internal::ISystem** pOutSystem )
+{
+	if( g_sys.get( ) == nullptr )
+	{
+		OutputDebugString( L"Initialize WSocket first! \n" );
+		return false;
+	}
+
+	*pOutSystem = g_sys.get( );
+
+	return true;
+}

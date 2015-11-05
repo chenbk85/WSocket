@@ -25,9 +25,10 @@
 namespace WSocket
 {
 	WSOCKET_API bool InitializeWSocket( ISystemImpl* pSystemImpl );
-
+	WSOCKET_API bool GetSystem( Internal::ISystem** pOutSystem );
 }
 
 
 
 #include "WSocketHelper.h"
+#include "WSocketTemplates.h"
