@@ -11,52 +11,52 @@ CSystemProfiler::CSystemProfiler( )
 	GetSystemInfo( &m_systemInfo );
 
 
-	//=> Get Pdh
-	if( !GetProcessMemoryInfo( GetCurrentProcess( ), &m_memCounter, sizeof( PROCESS_MEMORY_COUNTERS ) ) )
-	{
-		throw std::runtime_error( __FUNCTION__ " Failed to GetProcessMemoryInfo!" );
-	}
+	WinApi::Psapi::_GetProcessMemoryInfo( GetCurrentProcess( ), &m_memCounter, sizeof( PROCESS_MEMORY_COUNTERS ) );
 
-	if( PdhOpenQuery( nullptr, NULL, &m_cpuQuery ) != ERROR_SUCCESS )
-	{
-		throw std::runtime_error( __FUNCTION__ " Failed to open PdhQuery" );
-	}
+	WinApi::Pdh::OpenQuery( nullptr, NULL, &m_cpuQuery );
+	WinApi::Pdh::AddEnglishCounter( m_cpuQuery, L"\\Processor(_Total)\\% Processor Time", NULL, &m_cpuCounter );
+	WinApi::Pdh::CollectQueryData( m_cpuQuery );
 
-	if( PdhAddEnglishCounter( m_cpuQuery, L"\\Processor(_Total)\\% Processor Time", NULL, &m_cpuCounter ) != ERROR_SUCCESS )
-	{
-		throw std::runtime_error( __FUNCTION__ " Failed to AddEnglishCounter" );
-	}
 
-	if( PdhCollectQueryData( m_cpuQuery ) != ERROR_SUCCESS )
-	{
-		throw std::runtime_error( __FUNCTION__ " CollectQueryData" );
-	}
-
-	
 	this->UpdateStats( );
 }
 
 CSystemProfiler::~CSystemProfiler( )
 {
-	if( m_cpuQuery )
-	{
-		PdhCloseQuery( m_cpuQuery );
-	}
+	WinApi::Pdh::CloseQuery( m_cpuQuery );
+
 
 }
 
 void CSystemProfiler::UpdateStats( )
 {
-	//=> Update Memory
-	GlobalMemoryStatusEx( &m_systemMemInfo );
-	m_nMemoryUsed = m_systemMemInfo.ullTotalPageFile - m_systemMemInfo.ullAvailPageFile;
+	for( ;; ){
 
-	//=> Read CPU Usage
-	PDH_FMT_COUNTERVALUE counterVal;
-	PdhCollectQueryData( m_cpuQuery );
-	PdhGetFormattedCounterValue( m_cpuCounter, PDH_FMT_DOUBLE, NULL, &counterVal );
-	double d = counterVal.doubleValue;
+		//=> Update Memory
+		WinApi::SysInfo::GlobalMemoryStatusEx( &m_systemMemInfo );
+		m_nMemoryUsed = m_systemMemInfo.ullTotalPageFile - m_systemMemInfo.ullAvailPageFile;
 
+		//=> Read CPU Usage
+		PDH_FMT_COUNTERVALUE counterVal;
+		WinApi::Pdh::CollectQueryData( m_cpuQuery );
+
+		if( PdhGetFormattedCounterValue( m_cpuCounter, PDH_FMT_DOUBLE, NULL, &counterVal ) != ERROR_SUCCESS ||
+			counterVal.doubleValue == 0.0 ||
+			counterVal.doubleValue == 100.0
+			
+			)
+		{
+		}
+		else
+		{
+			double d = counterVal.doubleValue;
+			wprintf( L"%lf Mem: %lf \n", d, ( (double)m_nMemoryUsed ) / 1024.0  );
+		}
+
+
+
+		Sleep( 100 );
+	}
 
 	return;
 }

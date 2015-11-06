@@ -100,6 +100,9 @@
     <ClInclude Include="WExport\WSocketTemplates.h">
       <Filter>WExport</Filter>
     </ClInclude>
+    <ClInclude Include="Helper\SafeWinApi.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
