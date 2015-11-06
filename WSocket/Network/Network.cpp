@@ -16,3 +16,8 @@ void CNetwork::CreateNetwork( USHORT uPort )
 	
 
 }
+
+void CNetwork::OnUpdateNetwork( )
+{
+
+}

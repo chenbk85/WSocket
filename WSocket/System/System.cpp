@@ -43,11 +43,13 @@ bool CSystem::CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetwor
 	}
 	catch( std::exception e )
 	{
-		AddLog( (wchar_t*)char_to_wstring( e.what( ) ).c_str( ) );
+		AddLog( char_to_wstring( e.what( ) ).c_str( ) );
 
 		SafeDelete( pNetwork );
 		return false;
 	}
+
+
 
 	*pNetworkOut = pNetwork;
 
@@ -61,12 +63,18 @@ void CSystem::DestroyNetwork( WSocket::Internal::INetwork* pNetwork )
 
 void CSystem::UpdateSystem( )
 {
-	throw std::logic_error( "The method or operation is not implemented." );
+	m_pSystemProfiler->UpdateStats( );
+
+	std::lock_guard< std::mutex > l( m_cs );
+
+	for( auto i : m_vecNetwork )
+		i->OnUpdateNetwork( );
+
 }
 
 
 
-void CSystem::AddLog( wchar_t* szFormat, ... )
+void CSystem::AddLog( const wchar_t* szFormat, ... )
 {
 	wchar_t szMessage[ 512 ];
 

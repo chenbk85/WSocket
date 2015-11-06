@@ -24,6 +24,7 @@
 //=> Profiling
 #include <profileapi.h>
 #include <Psapi.h>
+#include <Pdh.h>
 
 //=> Std
 #include <string>

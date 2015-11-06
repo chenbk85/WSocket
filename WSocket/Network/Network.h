@@ -16,6 +16,8 @@ public:
 public:
 	void CreateNetwork( USHORT uPort );
 
+	void OnUpdateNetwork( );
+
 
 public:
 	std::unique_ptr< CBufferPool >		m_pBufferPool = std::make_unique< CBufferPool >( );

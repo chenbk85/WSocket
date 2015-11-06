@@ -2,7 +2,7 @@
 
 #include "Profiler/SystemProfiler.h"
 
-
+class CNetwork;
 class CSystem : public WSocket::Internal::ISystem
 {
 public:
@@ -21,7 +21,7 @@ public:
 
 
 public:
-	void AddLog( wchar_t* szFormat, ... );
+	void AddLog( const wchar_t* szFormat, ... );
 
 
 public:
@@ -33,8 +33,11 @@ private:
 	WSADATA					m_wsaData;
 	WSocket::ISystemImpl*	m_pSystemImpl;
 
+	std::mutex				m_cs;
 
-	std::unique_ptr< CSystemProfiler>	m_pSystemProfiler = std::make_unique< CSystemProfiler >( );
+	std::vector< CNetwork* >			m_vecNetwork;
+
+	std::unique_ptr< CSystemProfiler >	m_pSystemProfiler = std::make_unique< CSystemProfiler >( );
 };
 
 
