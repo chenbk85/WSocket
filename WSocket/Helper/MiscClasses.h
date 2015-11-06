@@ -11,12 +11,13 @@ public:
 
 		va_list args;
 		va_start( args, szFormat );
-		if( vsprintf_s( szMessage, szFormat, args ) == _TRUNCATE )
+		int nLen = vsprintf_s( szMessage, szFormat, args );
+		if( nLen == _TRUNCATE )
 		{
 			__debugbreak( );
 		}
 
-		__super::exception( ( const char* )szMessage );
+		__super::operator=( std::exception( szMessage ) );
 	}
 };
 

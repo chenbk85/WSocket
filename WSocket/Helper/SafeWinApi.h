@@ -110,6 +110,14 @@ namespace WinApi
 				Internal::CheckBOOL_LE( bResult, __FUNCTION__ );
 			}
 		}
+
+		inline void _GetPerformanceInfo( PPERFORMANCE_INFORMATION pPerformanceInformation, DWORD cb )
+		{
+			BOOL bResult = ::GetPerformanceInfo( pPerformanceInformation, cb );
+			{
+				Internal::CheckBOOL_LE( bResult, __FUNCTION__ );
+			}
+		}
 	}
 
 	namespace SysInfo

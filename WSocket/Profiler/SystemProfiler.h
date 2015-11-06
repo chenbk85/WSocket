@@ -1,5 +1,10 @@
 #pragma once
 
+namespace eSystemStatus {
+	enum e {
+		eHighLoad, eNormalLoad, eIdle
+	};
+}
 
 class CSystemProfiler
 {
@@ -24,12 +29,18 @@ public:
 	}
 
 private:
-	SYSTEM_INFO		m_systemInfo;
-	MEMORYSTATUSEX	m_systemMemInfo;
-	size_t			m_nMemoryUsed = 0;
+	SYSTEM_INFO					m_systemInfo;
+	MEMORYSTATUSEX				m_memoryInfo;
+
 
 	PDH_HQUERY					m_cpuQuery = INVALID_HANDLE_VALUE;
 	PDH_HCOUNTER				m_cpuCounter = INVALID_HANDLE_VALUE;
 	PROCESS_MEMORY_COUNTERS		m_memCounter;
 
+
+	std::atomic< size_t >		m_nMemoryUsed = 0;
+	std::atomic< size_t >		m_nMemoryFree = 0;
+
+	std::atomic< size_t >		m_nMemoryLoad = 0;	//=> 0% -> 100%
+	std::atomic< size_t >		m_nCpuLoad;
 };
