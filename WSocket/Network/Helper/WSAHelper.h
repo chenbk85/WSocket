@@ -6,10 +6,6 @@ class CWSAHelper
 public:
 	void Initialize( SOCKET hSocket )
 	{
-		m_fnAcceptEx = nullptr;
-		ZeroMemory( &m_rioTable, sizeof( RIO_EXTENSION_FUNCTION_TABLE ) );
-
-
 		static std::once_flag _initFlag;
 		std::call_once( _initFlag, [ & ]{ 
 

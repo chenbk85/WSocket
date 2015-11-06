@@ -17,19 +17,12 @@ CServerSocket::~CServerSocket( )
 
 void CServerSocket::CreateSocket( USHORT uPort )
 {
-	m_hSocket = WSASocketW( AF_INET, SOCK_STREAM, IPPROTO::IPPROTO_TCP, nullptr, 0, WSA_FLAG_REGISTERED_IO );
-	if( m_hSocket == INVALID_SOCKET )
-	{
-		throw FormattedException( __FUNCTION__ " failed WSA: %d, last error %d", WSAGetLastError( ), GetLastError( ) );
-	}
-
+	m_hSocket = WinApi::WinSock::WSASocketW( AF_INET, SOCK_STREAM, IPPROTO::IPPROTO_TCP, nullptr, 0, WSA_FLAG_REGISTERED_IO );
 
 	g_wsa.Initialize( m_hSocket );
 
-
 	BOOL opt = TRUE;
-	setsockopt( m_hSocket, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast< const char* >( &opt ), sizeof( BOOL ) );
-
+	WinApi::WinSock::setsockopt( m_hSocket, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast< const char* >( &opt ), sizeof( BOOL ) );
 
 
 	SOCKADDR_IN addr;
@@ -40,15 +33,8 @@ void CServerSocket::CreateSocket( USHORT uPort )
 		addr.sin_port = htons( uPort );
 	}
 
-	if( ::bind( m_hSocket, reinterpret_cast< SOCKADDR* >( &addr ), sizeof( SOCKADDR_IN ) ) == INVALID_SOCKET )
-	{
-		throw FormattedException( __FUNCTION__ " failed WSA: %d, last error %d", WSAGetLastError( ), GetLastError( ) );
-	}
-
-	if( ::listen( m_hSocket, SOMAXCONN ) == INVALID_SOCKET )
-	{
-		throw FormattedException( __FUNCTION__ " failed WSA: %d, last error %d", WSAGetLastError( ), GetLastError( ) );
-	}
+	WinApi::WinSock::bind( m_hSocket, reinterpret_cast< SOCKADDR* >( &addr ), sizeof( SOCKADDR_IN ) );
+	WinApi::WinSock::listen( m_hSocket, SOMAXCONN );
 }
 
 void CServerSocket::ShutdownSocket( )

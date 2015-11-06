@@ -28,8 +28,8 @@ void CSystem::Initialize( )
 	{
 		throw std::runtime_error( "Failed to load WSA" );
 	}
-}
 
+}
 
 bool CSystem::CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetworkOut )
 {

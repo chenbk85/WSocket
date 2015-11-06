@@ -25,13 +25,21 @@ namespace WinApi
 			}
 		}
 
-		inline void CheckSocketStatus( SOCKET hSocket, const char* szFunction )
+		inline void CheckInvalidSocket( SOCKET hSocket, const char* szFunction )
 		{
-			if( hSocket != INVALID_SOCKET )
+			if( hSocket == INVALID_SOCKET )
 			{
 				throw FormattedException( "%s failed! ( LastError: %d WSA: %d )", szFunction, GetLastError( ), WSAGetLastError( ) );
 			}
 		}	
+
+		inline void CheckSocketError( int nResult, const char* szFunction )
+		{
+			if( nResult == SOCKET_ERROR )
+			{
+				throw FormattedException( "%s failed! ( LastError: %d WSA: %d )", szFunction, GetLastError( ), WSAGetLastError( ) );
+			}
+		}
 		
 		inline void CheckPdhStatus( PDH_STATUS pdhStatus, const char* szFunction )
 		{
@@ -131,5 +139,39 @@ namespace WinApi
 		}
 	}
 
+	namespace WinSock
+	{
+		void bind( SOCKET hSocket, const struct sockaddr FAR* name, int namelen )
+		{
+			int nResult = ::bind( hSocket, name, namelen );
+			{
+				Internal::CheckSocketError( nResult, __FUNCTION__ );
+			}
+		}
 
+		SOCKET WSASocket( int af, int type, int protocol, LPWSAPROTOCOL_INFOW lpProtocolInfo, GROUP g, DWORD dwFlags )
+		{
+			SOCKET hSocket = ::WSASocketW( af, type, protocol, lpProtocolInfo, g, dwFlags );
+			{
+				Internal::CheckInvalidSocket( hSocket, __FUNCTION__ );
+			}
+		}
+
+		void setsockopt( SOCKET s, int level, int optname, const char FAR * optval, int optlen )
+		{
+			int nResult = ::setsockopt( s, level, optname, optval, optlen );
+			{
+				Internal::CheckSocketError( nResult, __FUNCTION__ );
+			}
+		}
+
+		void listen( SOCKET s, int backlog )
+		{
+			int nResult = ::listen( s, backlog );
+			{
+				Internal::CheckSocketError( nResult, __FUNCTION__ );
+			}
+		}
+
+	}
 }
