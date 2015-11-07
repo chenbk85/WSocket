@@ -1,24 +1,33 @@
 #include "stdafx.h"
-
-#include "SocketSystem.h"
+#include "System/System.h"
 
 
 int main()
 {
-	auto pSystem = std::make_unique< CSocketSystem >( );
+#ifdef _DEBUG
+	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+	_CrtSetReportMode( _CRT_ERROR, _CRTDBG_MODE_DEBUG );
+#endif
 
-	if( !WSocket::InitializeWSocket( pSystem.get( ) ) )
+	try
 	{
-		__debugbreak( );
+		if( !WSocket::InitializeWSocket( CSystem::GetInstance( )->GetLogger( ) ) )
+		{
+			//=> Sadly throwing over dll boundaries is forbidden 
+			throw std::runtime_error( "failed to init wsocket" );
+		}
+
+		CSystem::GetInstance( )->CreateNetworks( );
+	}
+	catch( const std::exception& e )
+	{
+		Beep( 600, 200 );
+		printf( "\n\nError occurred on startup\n> %s\n\n", e.what( ) );
+
+		system( "pause" );
+		return EXIT_FAILURE;
 	}
 
-
-	pSystem->CreateNetwork( );
-
-
-
-	_gettch( );
-
-    return 0;
+	return CSystem::GetInstance( )->Run( );
 }
 

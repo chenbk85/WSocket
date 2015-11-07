@@ -1,29 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Common">
-      <UniqueIdentifier>{7126e275-f47f-4480-aace-ac22b704c905}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="TestNetwork">
       <UniqueIdentifier>{cdf197f1-a195-4956-a410-a6219a2d8ce5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network">
-      <UniqueIdentifier>{ce5e0804-2c06-4c0b-ade0-28420af32dc1}</UniqueIdentifier>
+    <Filter Include="AdminNetwork">
+      <UniqueIdentifier>{8ebeb26a-6d2b-4f72-8f12-802d684bded9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{359e831c-817a-4788-910b-4dacaf25f700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform Files">
+      <UniqueIdentifier>{7126e275-f47f-4480-aace-ac22b704c905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Common</Filter>
+      <Filter>Platform Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Common\Resource Files</Filter>
+      <Filter>Platform Files\Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Common</Filter>
+      <Filter>Platform Files</Filter>
     </ClInclude>
     <ClInclude Include="TestNetwork\TestDispatcher.h">
       <Filter>TestNetwork</Filter>
@@ -34,14 +37,26 @@
     <ClInclude Include="TestNetwork\TestUser.h">
       <Filter>TestNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="SocketSystem.h">
-      <Filter>Network</Filter>
+    <ClInclude Include="AdminNetwork\AdminDispatcher.h">
+      <Filter>AdminNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminNetwork\AdminNetwork.h">
+      <Filter>AdminNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminNetwork\AdminUser.h">
+      <Filter>AdminNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="System\System.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Logger.h">
+      <Filter>Log</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="stdafx.cpp">
-      <Filter>Common</Filter>
+      <Filter>Platform Files</Filter>
     </ClCompile>
     <ClCompile Include="TestNetwork\TestDispatcher.cpp">
       <Filter>TestNetwork</Filter>
@@ -52,13 +67,25 @@
     <ClCompile Include="TestNetwork\TestUser.cpp">
       <Filter>TestNetwork</Filter>
     </ClCompile>
-    <ClCompile Include="SocketSystem.cpp">
-      <Filter>Network</Filter>
+    <ClCompile Include="AdminNetwork\AdminNetwork.cpp">
+      <Filter>AdminNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="System\System.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Logger.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminNetwork\AdminDispatcher.cpp">
+      <Filter>AdminNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminNetwork\AdminUser.cpp">
+      <Filter>AdminNetwork</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestServer.rc">
-      <Filter>Common\Resource Files</Filter>
+      <Filter>Platform Files\Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
