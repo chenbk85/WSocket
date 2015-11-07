@@ -24,8 +24,12 @@
 
 namespace WSocket
 {
-	WSOCKET_API bool InitializeWSocket( ISystemImpl* pSystemImpl );
-	WSOCKET_API bool GetSystem( Internal::ISystem** pOutSystem );
+	WSOCKET_API bool InitializeWSocket( ILogImpl* pLogImpl );
+
+	WSOCKET_API void PulseSystem( );
+
+	WSOCKET_API bool CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl );
+	WSOCKET_API void DestroyNetworkInstance( INetworkImpl* pNetImpl );
 }
 
 

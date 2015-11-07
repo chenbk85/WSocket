@@ -7,6 +7,9 @@ namespace WSocket
 {
 	typedef void* __ptr64 UPacketBuffer;
 
+	namespace eLogType {
+		enum e { eSuccess, eInfo, eError };
+	}
 	
 	namespace Internal
 	{
@@ -19,16 +22,6 @@ namespace WSocket
 		{
 			
 
-		};
-
-		__interface ISystem
-		{
-			virtual bool CreateNetwork( USHORT uPort, Internal::INetwork** pNetworkOut ) = 0;
-			virtual void DestroyNetwork( Internal::INetwork* pNetwork ) = 0;
-
-
-			//=> This function updates all internal structures. (Should be called once every second)
-			virtual void UpdateSystem( ) = 0;
 		};
 	}
 
@@ -51,10 +44,10 @@ namespace WSocket
 		virtual IDispatcherImpl*	GetDispatcher( ) = 0;
 	};
 
-	__interface ISystemImpl
+
+	__interface ILogImpl
 	{
-		virtual void OnLog( const wchar_t* szMessage ) = 0;
-		//virtual void OnCritcalError( IErrorInfo* pInfo ) = 0;
+		virtual void OnLog( eLogType::e eType, const wchar_t* szMessage ) = 0;
 	};
 
 }

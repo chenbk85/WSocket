@@ -38,6 +38,9 @@
     <Filter Include="User">
       <UniqueIdentifier>{78393ff7-d1d8-4495-bba8-f76f86f088ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Misc">
+      <UniqueIdentifier>{91bd2e4e-29d3-4c47-9fd6-b98278474ac6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -103,6 +106,9 @@
     <ClInclude Include="Helper\SafeWinApi.h">
       <Filter>Helper</Filter>
     </ClInclude>
+    <ClInclude Include="System\Misc\LogPipe.h">
+      <Filter>System\Misc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -134,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="User\UserManager.cpp">
       <Filter>User</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Misc\LogPipe.cpp">
+      <Filter>System\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,9 +10,10 @@ std::unique_ptr< CSystem >	g_sys;
 
 
 
-CSystem::CSystem( WSocket::ISystemImpl* pSystemImpl )
-	: m_pSystemImpl( pSystemImpl )
+CSystem::CSystem( WSocket::ILogImpl* pLogImpl )
 {
+	m_pLogPipe = std::make_unique< CLogPipe >( pLogImpl );
+
 	Initialize( );
 }
 
@@ -31,61 +32,48 @@ void CSystem::Initialize( )
 
 }
 
-bool CSystem::CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetworkOut )
+bool CSystem::CreateNetworkInstance( USHORT nPort, WSocket::INetworkImpl* pNetImpl )
 {
-	CNetwork* pNetwork = nullptr;
-
-	try
-	{
-		pNetwork = new CNetwork( );
-
-		pNetwork->CreateNetwork( uPort );
-	}
-	catch( std::exception e )
-	{
-		AddLog( char_to_wstring( e.what( ) ).c_str( ) );
-
-		SafeDelete( pNetwork );
-		return false;
-	}
-
-
-
-	*pNetworkOut = pNetwork;
-
-	return true;
+	return false;
 }
 
-void CSystem::DestroyNetwork( WSocket::Internal::INetwork* pNetwork )
+void CSystem::DestroyNetworkInstance( WSocket::INetworkImpl* pNetImpl )
 {
-	throw std::logic_error( "The method or operation is not implemented." );
-}
-
-void CSystem::UpdateSystem( )
-{
-	m_pSystemProfiler->UpdateStats( );
-
-	std::lock_guard< std::mutex > l( m_cs );
-
-	for( auto i : m_vecNetwork )
-		i->OnUpdateNetwork( );
 
 }
 
-
-
-void CSystem::AddLog( const wchar_t* szFormat, ... )
+void CSystem::PulseSystem( )
 {
-	wchar_t szMessage[ 512 ];
 
-	va_list args;
-	va_start( args, szFormat );
-	if( vswprintf_s( szMessage, szFormat, args ) == _TRUNCATE )
-	{
-		GetClientImpl( )->OnLog( szFormat );
-	}
-
-	GetClientImpl( )->OnLog( szMessage );
 }
+
+//bool CSystem::CreateNetwork( USHORT uPort, WSocket::Internal::INetwork** pNetworkOut )
+//{
+//	CNetwork* pNetwork = nullptr;
+//
+//	try
+//	{
+//		pNetwork = new CNetwork( );
+//
+//		pNetwork->CreateNetwork( uPort );
+//	}
+//	catch( std::exception e )
+//	{
+//		AddLog( char_to_wstring( e.what( ) ).c_str( ) );
+//
+//		SafeDelete( pNetwork );
+//		return false;
+//	}
+//
+//
+//
+//	*pNetworkOut = pNetwork;
+//
+//	return true;
+//}
+//
+//
+
+
 
 

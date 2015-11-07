@@ -141,7 +141,7 @@ namespace WinApi
 
 	namespace WinSock
 	{
-		void bind( SOCKET hSocket, const struct sockaddr FAR* name, int namelen )
+		inline void bind( SOCKET hSocket, const struct sockaddr FAR* name, int namelen )
 		{
 			int nResult = ::bind( hSocket, name, namelen );
 			{
@@ -149,15 +149,16 @@ namespace WinApi
 			}
 		}
 
-		SOCKET WSASocket( int af, int type, int protocol, LPWSAPROTOCOL_INFOW lpProtocolInfo, GROUP g, DWORD dwFlags )
+		inline SOCKET WSASocket( int af, int type, int protocol, LPWSAPROTOCOL_INFOW lpProtocolInfo, GROUP g, DWORD dwFlags )
 		{
 			SOCKET hSocket = ::WSASocketW( af, type, protocol, lpProtocolInfo, g, dwFlags );
 			{
 				Internal::CheckInvalidSocket( hSocket, __FUNCTION__ );
 			}
+			return hSocket;
 		}
 
-		void setsockopt( SOCKET s, int level, int optname, const char FAR * optval, int optlen )
+		inline void setsockopt( SOCKET s, int level, int optname, const char FAR * optval, int optlen )
 		{
 			int nResult = ::setsockopt( s, level, optname, optval, optlen );
 			{
@@ -165,7 +166,7 @@ namespace WinApi
 			}
 		}
 
-		void listen( SOCKET s, int backlog )
+		inline void listen( SOCKET s, int backlog )
 		{
 			int nResult = ::listen( s, backlog );
 			{
