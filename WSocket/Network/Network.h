@@ -36,7 +36,7 @@ public:
 	std::unique_ptr< CBufferPool >		m_pBufferPool = std::make_unique< CBufferPool >( );
 
 	std::unique_ptr< CServerSocket >	m_pServerSocket = std::make_unique< CServerSocket >( );
-	std::unique_ptr< CAcceptWorker >	m_pAcceptWorker = std::make_unique< CAcceptWorker >( );
+	std::unique_ptr< CAcceptWorker >	m_pAcceptWorker = std::make_unique< CAcceptWorker >( this );
 
 	std::unique_ptr< CUserManager >		m_pUserManager = std::make_unique< CUserManager >( );
 };

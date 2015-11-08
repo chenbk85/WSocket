@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Profiler/ProfileThread.h"
+#include "System/SystemModule.h"
+
 
 struct sSocketAccept : public OVERLAPPED
 {
@@ -15,11 +17,11 @@ struct sSocketAccept : public OVERLAPPED
 };
 
 
-class CAcceptWorker
+class CAcceptWorker : public TNetworkModule< CAcceptWorker >
 {
 public:
-	CAcceptWorker( );
-	~CAcceptWorker( );
+	CAcceptWorker( CNetwork* pNetwork );
+	virtual ~CAcceptWorker( );
 
 public:
 	void CreateWorker( );
