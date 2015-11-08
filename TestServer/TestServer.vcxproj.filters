@@ -49,9 +49,6 @@
     <ClInclude Include="System\System.h">
       <Filter>Log</Filter>
     </ClInclude>
-    <ClInclude Include="System\Logger.h">
-      <Filter>Log</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -71,9 +68,6 @@
       <Filter>AdminNetwork</Filter>
     </ClCompile>
     <ClCompile Include="System\System.cpp">
-      <Filter>Log</Filter>
-    </ClCompile>
-    <ClCompile Include="System\Logger.cpp">
       <Filter>Log</Filter>
     </ClCompile>
     <ClCompile Include="AdminNetwork\AdminDispatcher.cpp">

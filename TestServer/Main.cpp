@@ -11,12 +11,6 @@ int main()
 
 	try
 	{
-		if( !WSocket::InitializeWSocket( CSystem::GetInstance( )->GetLogger( ) ) )
-		{
-			//=> Sadly throwing over dll boundaries is forbidden 
-			throw std::runtime_error( "failed to init wsocket" );
-		}
-
 		CSystem::GetInstance( )->CreateNetworks( );
 	}
 	catch( const std::exception& e )
