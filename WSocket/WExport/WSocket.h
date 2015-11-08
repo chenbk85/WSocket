@@ -3,8 +3,6 @@
 /*
 	WSocket - WebSocket C++ Lib
 	(C) Clemens Susenbeth 2015
-
-
 */
 
 
@@ -24,12 +22,11 @@
 
 namespace WSocket
 {
-	WSOCKET_API bool InitializeWSocket( ILogImpl* pLogImpl );
-
-	WSOCKET_API void PulseSystem( );
-
-	WSOCKET_API bool CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl );
+	WSOCKET_API bool CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl, Internal::INetwork** pOutNetwork );
 	WSOCKET_API void DestroyNetworkInstance( INetworkImpl* pNetImpl );
+
+	//> This should be called every second to update the systems.	
+	WSOCKET_API void TickSystems( );
 }
 
 

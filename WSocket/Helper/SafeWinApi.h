@@ -173,6 +173,14 @@ namespace WinApi
 				Internal::CheckSocketError( nResult, __FUNCTION__ );
 			}
 		}
-
+		
+		inline void WSAStartup( WORD wVersionRequired, WSADATA* lpWSAData )
+		{
+			int nResult = ::WSAStartup( wVersionRequired, lpWSAData );
+			if( nResult != 0 )
+			{
+				throw FormattedException( __FUNCTION__ " : startup failed ( %d ) LastError: %d WSA: %d", nResult, GetLastError( ), WSAGetLastError( ) );
+			}
+		}
 	}
 }

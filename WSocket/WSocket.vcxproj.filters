@@ -39,7 +39,7 @@
       <UniqueIdentifier>{78393ff7-d1d8-4495-bba8-f76f86f088ec}</UniqueIdentifier>
     </Filter>
     <Filter Include="System\Misc">
-      <UniqueIdentifier>{91bd2e4e-29d3-4c47-9fd6-b98278474ac6}</UniqueIdentifier>
+      <UniqueIdentifier>{b6a92eb9-0170-413e-93dd-01ea941e0807}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +73,6 @@
     <ClInclude Include="Helper\SpinLock.h">
       <Filter>Helper</Filter>
     </ClInclude>
-    <ClInclude Include="System\System.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="Network\Network.h">
       <Filter>Network</Filter>
     </ClInclude>
@@ -106,8 +103,11 @@
     <ClInclude Include="Helper\SafeWinApi.h">
       <Filter>Helper</Filter>
     </ClInclude>
-    <ClInclude Include="System\Misc\LogPipe.h">
+    <ClInclude Include="System\Misc\NetManager.h">
       <Filter>System\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="System\GlobalEnvironment.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +119,6 @@
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Platform Files</Filter>
-    </ClCompile>
-    <ClCompile Include="System\System.cpp">
-      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Network\Network.cpp">
       <Filter>Network</Filter>
@@ -141,8 +138,11 @@
     <ClCompile Include="User\UserManager.cpp">
       <Filter>User</Filter>
     </ClCompile>
-    <ClCompile Include="System\Misc\LogPipe.cpp">
+    <ClCompile Include="System\Misc\NetManager.cpp">
       <Filter>System\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="System\GlobalEnvironment.cpp">
+      <Filter>System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

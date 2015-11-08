@@ -1,83 +1,57 @@
 #include "stdafx.h"
 #include "WSocket.h"
 
-#include "System/System.h"
-
-
-static std::once_flag		s_initFlag;
-
-static std::atomic< bool >	s_bSysCreated = false;
+#include "System/GlobalEnvironment.h"
+#include "Network/Network.h"
 
 
 
-bool _CheckSystemValid( )
+
+
+
+
+WSOCKET_API bool WSocket::CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl, Internal::INetwork** pOutNetwork )
 {
-	if( !s_bSysCreated.load( std::memory_order_acquire ) )
-	{
-		OutputDebugString( L"[WSocket] you need to initialize wsocket first!" );
-		return false;
-	}
-
-	return true;
-}
-
-
-
-WSOCKET_API bool WSocket::InitializeWSocket( ILogImpl* pLogImpl )
-{
+	CNetwork* pNetwork = nullptr;
 	try
 	{
-		std::call_once( s_initFlag, [ & ]{
-			g_sys = std::make_unique< CSystem >( pLogImpl );
-
-			s_bSysCreated = true;
-		} );
-	}
-	catch( const std::exception e )
-	{
-		std::wstring szMessage = L"[WSocket] " + char_to_wstring( e.what( ) );
+		pNetwork = new CNetwork( pNetImpl );
 		{
-			pLogImpl->OnLog( eLogType::eError, szMessage.c_str( ) );
+			pNetwork->CreateNetwork( nPort );
 		}
+
+		gEnv->m_pNetManager->RegisterNetwork( pNetwork );
+	}
+	catch( const std::exception& e )
+	{
+		SafeDelete( pNetwork );
+		pNetImpl->OnLog( eLogType::eError, char_to_wstring( e.what( ) ).c_str( ) );
+
 		return false;
 	}
+
+	*pOutNetwork = pNetwork;
 
 	return true;
-}
-
-
-
-//> Note: only 'forwards' here but we have to make sure that g_sys is valid..
-WSOCKET_API void WSocket::PulseSystem( )
-{
-	if( !_CheckSystemValid( ) )
-	{
-		return;
-	}
-
-	g_sys->PulseSystem( );
-}
-
-WSOCKET_API bool WSocket::CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl )
-{
-	if( !_CheckSystemValid( ) )
-	{
-		return false;
-	}
-
-	return g_sys->CreateNetworkInstance( nPort, pNetImpl );
 }
 
 WSOCKET_API void WSocket::DestroyNetworkInstance( INetworkImpl* pNetImpl )
 {
-	if( !_CheckSystemValid( ) )
+	auto pNetwork = gEnv->m_pNetManager->Find( pNetImpl );
+	if( pNetwork != nullptr )
 	{
-		return;
+		SafeDelete( pNetwork );
 	}
-
-	g_sys->DestroyNetworkInstance( pNetImpl );
 }
 
+WSOCKET_API void WSocket::TickSystems( )
+{
+	gEnv->m_pSystemProfiler->OnUpdate( );
+
+	gEnv->m_pNetManager->ForEach( [ ]( CNetwork* pNet ){
+		pNet->OnUpdateNetwork( );
+	} );
+}
 
 
 

@@ -13,16 +13,17 @@ namespace WSocket
 	
 	namespace Internal
 	{
-		__interface INetwork
-		{
-
-		};
-
 		__interface IUser
 		{
-			
 
 		};
+
+		__interface INetwork
+		{
+			IUser*	GetUserById( size_t nId ) = 0;
+		};
+
+
 	}
 
 	__interface IUserImpl
@@ -42,12 +43,9 @@ namespace WSocket
 		virtual IUserImpl*			ConstructUser( BYTE* pBuffer ) = 0;
 		virtual size_t				GetUserSize( ) = 0;
 		virtual IDispatcherImpl*	GetDispatcher( ) = 0;
-	};
 
-
-	__interface ILogImpl
-	{
 		virtual void OnLog( eLogType::e eType, const wchar_t* szMessage ) = 0;
 	};
+
 
 }

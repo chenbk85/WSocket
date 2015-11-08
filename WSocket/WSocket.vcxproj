@@ -93,8 +93,8 @@
     <ClInclude Include="Profiler\SystemProfiler.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="System\Misc\LogPipe.h" />
-    <ClInclude Include="System\System.h" />
+    <ClInclude Include="System\GlobalEnvironment.h" />
+    <ClInclude Include="System\Misc\NetManager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User\User.h" />
     <ClInclude Include="User\UserManager.h" />
@@ -113,8 +113,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="System\Misc\LogPipe.cpp" />
-    <ClCompile Include="System\System.cpp" />
+    <ClCompile Include="System\GlobalEnvironment.cpp" />
+    <ClCompile Include="System\Misc\NetManager.cpp" />
     <ClCompile Include="User\User.cpp" />
     <ClCompile Include="User\UserManager.cpp" />
     <ClCompile Include="WExport\WSocket.cpp" />

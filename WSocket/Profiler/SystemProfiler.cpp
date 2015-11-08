@@ -18,7 +18,7 @@ CSystemProfiler::CSystemProfiler( )
 	WinApi::Pdh::CollectQueryData( m_cpuQuery );
 
 
-	this->UpdateStats( );
+	this->OnUpdate( );
 }
 
 CSystemProfiler::~CSystemProfiler( )
@@ -26,7 +26,7 @@ CSystemProfiler::~CSystemProfiler( )
 	WinApi::Pdh::CloseQuery( m_cpuQuery );
 }
 
-void CSystemProfiler::UpdateStats( )
+void CSystemProfiler::OnUpdate( )
 {
 	//=> Update Memory
 	WinApi::SysInfo::GlobalMemoryStatusEx( &m_memoryInfo );

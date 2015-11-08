@@ -14,7 +14,7 @@ public:
 
 public:
 
-	void UpdateStats( );
+	void OnUpdate( );
 
 
 public:

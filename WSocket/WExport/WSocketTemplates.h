@@ -21,7 +21,7 @@ namespace WSocket
 	public:
 		void CreateNetwork( USHORT nPort )
 		{
-			if( !WSocket::CreateNetworkInstance( nPort, this ) )
+			if( !WSocket::CreateNetworkInstance( nPort, this, &m_pNetwork ) )
 			{
 				throw std::runtime_error( "Failed to create network!" );
 			}
@@ -43,7 +43,12 @@ namespace WSocket
 			return m_pDispatcher.get( );
 		}
 
+	public:
+		inline Internal::INetwork*		GetNetwork( ) { return m_pNetwork;	}
+
 	private:
+		Internal::INetwork*		m_pNetwork = nullptr;
+
 		std::unique_ptr< TDispatcher >	m_pDispatcher = std::make_unique< TDispatcher >( );
 	};
 
