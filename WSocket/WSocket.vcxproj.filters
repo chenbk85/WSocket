@@ -38,8 +38,14 @@
     <Filter Include="User">
       <UniqueIdentifier>{78393ff7-d1d8-4495-bba8-f76f86f088ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System\Misc">
-      <UniqueIdentifier>{b6a92eb9-0170-413e-93dd-01ea941e0807}</UniqueIdentifier>
+    <Filter Include="System\Manager">
+      <UniqueIdentifier>{8de187ea-7e3c-4d11-973c-b0b28e1449fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Worker">
+      <UniqueIdentifier>{4dca1ac8-0c49-4012-9435-5dc3d2fecfb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Profiler\Helper">
+      <UniqueIdentifier>{e16e898d-8d95-40a0-85f8-c41acc09f507}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,11 +109,23 @@
     <ClInclude Include="Helper\SafeWinApi.h">
       <Filter>Helper</Filter>
     </ClInclude>
-    <ClInclude Include="System\Misc\NetManager.h">
-      <Filter>System\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="System\GlobalEnvironment.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SystemModule.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Manager\NetManager.h">
+      <Filter>System\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Worker\AcceptWorker.h">
+      <Filter>Network\Worker</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler\ProfileThread.h">
+      <Filter>Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler\Helper\ProfileCompQueue.h">
+      <Filter>Profiler\Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -138,11 +156,20 @@
     <ClCompile Include="User\UserManager.cpp">
       <Filter>User</Filter>
     </ClCompile>
-    <ClCompile Include="System\Misc\NetManager.cpp">
-      <Filter>System\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="System\GlobalEnvironment.cpp">
       <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SystemModule.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Manager\NetManager.cpp">
+      <Filter>System\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Worker\AcceptWorker.cpp">
+      <Filter>Network\Worker</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler\ProfileThread.cpp">
+      <Filter>Profiler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

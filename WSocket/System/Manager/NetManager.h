@@ -23,6 +23,12 @@ public:
 		}
 	}
 
+	bool IsEmpty( )
+	{
+		std::lock_guard< std::mutex > l( m_cs );
+		return m_vecNetwork.size( ) > 0;
+	}
+
 private:
 	std::mutex		m_cs;
 

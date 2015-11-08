@@ -4,6 +4,8 @@
 
 #include "Buffer/BufferPool.h"
 
+#include "Worker/AcceptWorker.h"
+
 #include "User\UserManager.h"
 
 
@@ -16,17 +18,15 @@ public:
 
 public:
 	void CreateNetwork( USHORT uPort );
-
 	void OnUpdateNetwork( );
 
 
+protected:
 	virtual WSocket::Internal::IUser* GetUserById( size_t nId ) override;
-
 
 public:
 	inline WSocket::INetworkImpl*	GetNetImpl( )	{ return m_pNetImpl; }
-
-
+	
 public:
 	WSADATA		m_wsaData;
 
@@ -36,6 +36,7 @@ public:
 	std::unique_ptr< CBufferPool >		m_pBufferPool = std::make_unique< CBufferPool >( );
 
 	std::unique_ptr< CServerSocket >	m_pServerSocket = std::make_unique< CServerSocket >( );
+	std::unique_ptr< CAcceptWorker >	m_pAcceptWorker = std::make_unique< CAcceptWorker >( );
 
 	std::unique_ptr< CUserManager >		m_pUserManager = std::make_unique< CUserManager >( );
 };

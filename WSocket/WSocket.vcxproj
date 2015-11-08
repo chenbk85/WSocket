@@ -90,11 +90,15 @@
     <ClInclude Include="Network\Helper\WSAHelper.h" />
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\Socket\ServerSocket.h" />
+    <ClInclude Include="Network\Worker\AcceptWorker.h" />
+    <ClInclude Include="Profiler\Helper\ProfileCompQueue.h" />
+    <ClInclude Include="Profiler\ProfileThread.h" />
     <ClInclude Include="Profiler\SystemProfiler.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\GlobalEnvironment.h" />
-    <ClInclude Include="System\Misc\NetManager.h" />
+    <ClInclude Include="System\Manager\NetManager.h" />
+    <ClInclude Include="System\SystemModule.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User\User.h" />
     <ClInclude Include="User\UserManager.h" />
@@ -108,13 +112,16 @@
     <ClCompile Include="Network\Buffer\BufferPool.cpp" />
     <ClCompile Include="Network\Network.cpp" />
     <ClCompile Include="Network\Socket\ServerSocket.cpp" />
+    <ClCompile Include="Network\Worker\AcceptWorker.cpp" />
+    <ClCompile Include="Profiler\ProfileThread.cpp" />
     <ClCompile Include="Profiler\SystemProfiler.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="System\GlobalEnvironment.cpp" />
-    <ClCompile Include="System\Misc\NetManager.cpp" />
+    <ClCompile Include="System\Manager\NetManager.cpp" />
+    <ClCompile Include="System\SystemModule.cpp" />
     <ClCompile Include="User\User.cpp" />
     <ClCompile Include="User\UserManager.cpp" />
     <ClCompile Include="WExport\WSocket.cpp" />

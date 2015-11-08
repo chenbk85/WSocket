@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "WSocket.h"
 
-#include "System/GlobalEnvironment.h"
 #include "Network/Network.h"
 
-
+#include "System/GlobalEnvironment.h"
 
 
 
