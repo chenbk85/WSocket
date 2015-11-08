@@ -7,15 +7,15 @@
     <Filter Include="AdminNetwork">
       <UniqueIdentifier>{8ebeb26a-6d2b-4f72-8f12-802d684bded9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Log">
-      <UniqueIdentifier>{359e831c-817a-4788-910b-4dacaf25f700}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platform Files">
       <UniqueIdentifier>{7126e275-f47f-4480-aace-ac22b704c905}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform Files\Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{359e831c-817a-4788-910b-4dacaf25f700}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,7 +47,7 @@
       <Filter>AdminNetwork</Filter>
     </ClInclude>
     <ClInclude Include="System\System.h">
-      <Filter>Log</Filter>
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +68,7 @@
       <Filter>AdminNetwork</Filter>
     </ClCompile>
     <ClCompile Include="System\System.cpp">
-      <Filter>Log</Filter>
+      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="AdminNetwork\AdminDispatcher.cpp">
       <Filter>AdminNetwork</Filter>

@@ -25,7 +25,7 @@ int CSystem::Run( )
 {
 	while( WaitForSingleObject( m_hCloseProcess, 1 ) != WAIT_OBJECT_0 )
 	{
-
+		WSocket::TickSystems( );
 
 	}
 
