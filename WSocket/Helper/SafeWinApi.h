@@ -98,6 +98,7 @@ namespace WinApi
 			{
 				Internal::CheckPdhStatus( status, __FUNCTION__ );
 			}
+			hQuery = INVALID_HANDLE_VALUE;
 		}
 
 		inline void GetFormattedCounterValue( PDH_HCOUNTER hCounter, DWORD dwFormat, LPDWORD lpdwType, PPDH_FMT_COUNTERVALUE pValue )

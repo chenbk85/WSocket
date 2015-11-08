@@ -9,6 +9,8 @@ CNetwork::CNetwork( WSocket::INetworkImpl* pNetImpl )
 
 CNetwork::~CNetwork( )
 {
+	m_pServerSocket->ShutdownSocket( );
+
 	WSACleanup( );
 }
 

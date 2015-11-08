@@ -11,6 +11,8 @@
 
 WSOCKET_API bool WSocket::CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl, Internal::INetwork** pOutNetwork )
 {
+
+	//__rdtsc( );
 	CNetwork* pNetwork = nullptr;
 	try
 	{

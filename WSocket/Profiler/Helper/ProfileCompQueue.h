@@ -1,7 +1,6 @@
 #pragma once
 
 
-template< typename T >
 class CProfileCompQueue
 {
 	static const size_t s_nBeginCount = 1024;
@@ -21,7 +20,8 @@ public:
 public:
 	bool Get( size_t* nElemRemoved, DWORD dwTimeout, BOOL bAlert = FALSE )
 	{
-		return ::GetQueuedCompletionStatusEx( m_hIoCp, m_pQueueElements, &m_nElementCount, nElemRemoved, dwTimeout, bAlert );
+		return false;
+		//return ::GetQueuedCompletionStatusEx( m_hIoCp, m_pQueueElements, &m_nElementCount, nElemRemoved, dwTimeout, bAlert );
 	}
 
 
@@ -29,7 +29,7 @@ public:
 	{
 		SafeDeleteArray( m_pQueueElements );
 
-		m_pQueueElements = new T[ nCount ];
+		m_pQueueElements = new OVERLAPPED_ENTRY[ nCount ];
 
 		m_nElementCount = nCount;
 	}
@@ -39,5 +39,5 @@ private:
 	size_t	m_nElementCount = 0;
 
 
-	T*		m_pQueueElements = nullptr;
+	OVERLAPPED_ENTRY*		m_pQueueElements = nullptr;
 };

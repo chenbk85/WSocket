@@ -21,6 +21,9 @@
 #include <stdio.h>
 #include <tchar.h>
 
+#include <VersionHelpers.h>
+
+
 //=> Profiling
 #include <profileapi.h>
 #include <Psapi.h>

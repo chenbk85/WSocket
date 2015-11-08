@@ -127,6 +127,9 @@
     <ClInclude Include="Profiler\Helper\ProfileCompQueue.h">
       <Filter>Profiler\Helper</Filter>
     </ClInclude>
+    <ClInclude Include="Helper\ThreadHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">

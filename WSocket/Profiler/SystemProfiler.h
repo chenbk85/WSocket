@@ -1,12 +1,16 @@
 #pragma once
 
+
+
+#include "System/SystemModule.h"
+
 namespace eSystemStatus {
 	enum e {
 		eHighLoad, eNormalLoad, eIdle
 	};
 }
 
-class CSystemProfiler
+class CSystemProfiler : public TSystemModule< CSystemProfiler >
 {
 public:
 	CSystemProfiler( );

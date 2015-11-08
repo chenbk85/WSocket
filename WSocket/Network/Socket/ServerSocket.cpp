@@ -7,7 +7,8 @@ CWSAHelper g_wsa;
 
 
 
-CServerSocket::CServerSocket( )
+CServerSocket::CServerSocket( CNetwork* pNetwork )
+	: TNetworkModule( pNetwork )
 {
 }
 
@@ -23,7 +24,6 @@ void CServerSocket::CreateSocket( USHORT uPort )
 
 	BOOL opt = TRUE;
 	WinApi::WinSock::setsockopt( m_hSocket, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast< const char* >( &opt ), sizeof( BOOL ) );
-
 
 	SOCKADDR_IN addr;
 	ZeroMemory( &addr, sizeof( SOCKADDR_IN ) );

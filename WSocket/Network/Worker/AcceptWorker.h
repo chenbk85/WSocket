@@ -1,7 +1,10 @@
 #pragma once
 
-#include "Profiler/ProfileThread.h"
+
 #include "System/SystemModule.h"
+
+#include "Profiler/ProfileThread.h"
+#include "Profiler/Helper/ProfileCompQueue.h"
 
 
 struct sSocketAccept : public OVERLAPPED
@@ -26,7 +29,10 @@ public:
 public:
 	void CreateWorker( );
 
-private:
-	CProfileThread	m_thread;
+public:
+	void CreateSockets( );
 
+private:
+	CProfileThread		m_thread;
+	CProfileCompQueue*	m_compQueue;
 };

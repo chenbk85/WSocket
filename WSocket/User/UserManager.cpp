@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "UserManager.h"
 
-CUserManager::CUserManager( )
+CUserManager::CUserManager( CNetwork* pNetwork )
+	: TNetworkModule( pNetwork )
 {
 
 }

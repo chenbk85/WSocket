@@ -1,11 +1,13 @@
 #pragma once
 
 
+#include "System/SystemModule.h"
+
 class CUser;
-class CUserManager
+class CUserManager : public TNetworkModule< CUserManager >
 {
 public:
-	CUserManager( );
+	CUserManager( CNetwork* pNetwork );
 	~CUserManager( );
 
 public:

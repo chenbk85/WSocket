@@ -85,6 +85,7 @@
     <ClInclude Include="Helper\MiscFunctions.h" />
     <ClInclude Include="Helper\SafeWinApi.h" />
     <ClInclude Include="Helper\SpinLock.h" />
+    <ClInclude Include="Helper\ThreadHelper.h" />
     <ClInclude Include="Network\Buffer\BufferPool.h" />
     <ClInclude Include="Network\Buffer\NetworkBuffer.h" />
     <ClInclude Include="Network\Helper\WSAHelper.h" />

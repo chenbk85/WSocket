@@ -4,6 +4,7 @@ __interface ISystemModule
 {
 	virtual const wchar_t*		GetModuleName( ) = 0;
 	//virtual void SizeModule( ISizer* pSizer ) = 0;
+	//virtual void OnHandleMessage( eMessage e, void __ptr64* pData ) = 0
 };
 
 template< class T >
