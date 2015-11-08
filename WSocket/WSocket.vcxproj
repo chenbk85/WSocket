@@ -92,6 +92,7 @@
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\Socket\ServerSocket.h" />
     <ClInclude Include="Network\Worker\AcceptWorker.h" />
+    <ClInclude Include="Profiler\Analyser\LoadAnalyser.h" />
     <ClInclude Include="Profiler\Helper\ProfileCompQueue.h" />
     <ClInclude Include="Profiler\ProfileThread.h" />
     <ClInclude Include="Profiler\SystemProfiler.h" />

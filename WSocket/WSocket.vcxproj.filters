@@ -47,6 +47,9 @@
     <Filter Include="Profiler\Helper">
       <UniqueIdentifier>{e16e898d-8d95-40a0-85f8-c41acc09f507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Profiler\Analyser">
+      <UniqueIdentifier>{ee84bf2f-419c-44f8-be89-233e3e1c3139}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -129,6 +132,9 @@
     </ClInclude>
     <ClInclude Include="Helper\ThreadHelper.h">
       <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler\Analyser\LoadAnalyser.h">
+      <Filter>Profiler\Analyser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

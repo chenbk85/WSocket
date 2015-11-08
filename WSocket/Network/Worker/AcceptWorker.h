@@ -33,6 +33,5 @@ public:
 	void CreateSockets( );
 
 private:
-	CProfileThread		m_thread;
-	CProfileCompQueue*	m_compQueue;
+	CProfileCompThread	m_compQueue;
 };

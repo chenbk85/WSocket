@@ -10,7 +10,7 @@ namespace eThreadPriority {
 		eNormal = THREAD_PRIORITY_NORMAL,
 		eAboveNormal = THREAD_PRIORITY_ABOVE_NORMAL,
 		eHighest = THREAD_PRIORITY_HIGHEST,
-		
+
 		eTimeCritical = THREAD_PRIORITY_TIME_CRITICAL,
 		eIdle = THREAD_PRIORITY_IDLE
 	};
@@ -20,37 +20,36 @@ class CThreadHelper
 {
 public:
 	CThreadHelper( )
-	{
-
-	}
-
-	~CThreadHelper( )
-	{
-		
-	}
+	{ }
 
 public:
 	template< class _Fn, class... _Args >
-	void Run( _Fn&& _Fx, _Args&&... _Ax )
+	inline void Run( _Fn&& _Fx, _Args&&... _Ax )
 	{
 		assert( !m_thread.joinable( ) );
-		 
+
 		m_thread = std::thread( std::forward<_Fn>( _Fx ), std::forward<_Args>( _Ax )... );
 	}
 
 public:
-	inline void Suspend( )
+	inline DWORD Suspend( )
 	{
 		assert( m_thread.joinable( ) );
 
-		::SuspendThread( m_thread.native_handle( ) );
+		DWORD dwResult = ::SuspendThread( m_thread.native_handle( ) );
+
+		if( dwResult == MAXIMUM_SUSPEND_COUNT )
+		{
+			__debugbreak( );
+		}
+		return dwResult;
 	}
 
-	inline void Resume( )
+	inline DWORD Resume( )
 	{
 		assert( m_thread.joinable( ) );
 
-		::ResumeThread( m_thread.native_handle( ) );
+		return ::ResumeThread( m_thread.native_handle( ) );
 	}
 
 	inline void SetPriority( eThreadPriority::e ePriority )
@@ -60,8 +59,6 @@ public:
 		::SetThreadPriority( m_thread.native_handle( ), ePriority );
 	}
 
-private:
-	
-	
+protected:
 	std::thread			m_thread;
 };

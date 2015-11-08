@@ -2,44 +2,29 @@
 
 #include "Helper/ThreadHelper.h"
 
-class CProfileThread
+class CProfileThread : CThreadHelper
 {
-public:
-	enum e {
-		eBackgroundBegin = THREAD_MODE_BACKGROUND_BEGIN,
-		eBackgroundEnd = THREAD_MODE_BACKGROUND_END,
-
-		eAboveNormal = THREAD_PRIORITY_ABOVE_NORMAL
-	};
-
-
 public:
 	CProfileThread( );
 	~CProfileThread( );
 
 public:
-
-	void RunThread( std::function< bool( void ) > fCondition, std::function< void( void ) > f )
+	void RunThread( std::function< void( void ) > f )
 	{
-		m_thread = std::thread( [ & ]{
-			
+		this->Run( [ & ]{
+
 			for( ;; )
 			{
-				if( m_bShutdownFlag == true )
-				{
-					break;
-				}
+				//>profiling here :)
 
-				fCondition( );
-				{
-					f( );
-				}
+
+				f( );
+
+				//>
 			}
 
 		} );
 	}
-
-
 
 
 public:
@@ -57,23 +42,13 @@ public:
 		}
 	}
 
-	inline void Suspend( )
-	{
-		::SuspendThread( m_thread.native_handle( ) );
-	}
-
-	inline void Resume( )
-	{
-		::ResumeThread( m_thread.native_handle( ) );
-	}
-
-	inline void SetPriority( )
+	inline void SetShutdownFlag( )
 	{
 
 	}
 
 private:
 	std::atomic< bool >		m_bShutdownFlag = false;
-
-	std::thread				m_thread;
 };
+
+

@@ -1,43 +1,43 @@
 #pragma once
 
 
-class CProfileCompQueue
+#include "Profiler/ProfileThread.h"
+
+
+class CProfileCompThread : CProfileThread
 {
-	static const size_t s_nBeginCount = 1024;
+public:
+	CProfileCompThread( )
+	{ }
+
+	~CProfileCompThread( )
+	{ }
 
 public:
-	CProfileCompQueue( HANDLE hIoCp )
-		: m_hIoCp( hIoCp )
+	void Run( HANDLE hIoCp, DWORD dwTimeout, std::function< void( OVERLAPPED_ENTRY* pEntries, size_t nCount ) > f )
 	{
-		Realloc( s_nBeginCount );
-	}
+		this->RunThread( [ & ]{
+			
+			ULONG nCount = 0;
+			BOOL bResult = ::GetQueuedCompletionStatusEx( hIoCp, m_pEntries, 1024, &nCount, dwTimeout, FALSE );
+			if( !bResult )
+			{
+				if( GetLastError( ) != ERROR_ABANDONED_WAIT_0 )
+				{
+					__debugbreak( );
+				}
+				//> timeout?
+			}
 
-	~CProfileCompQueue( )
-	{
-		SafeDeleteArray( m_pQueueElements );
-	}
+			f( m_pEntries, nCount );
 
-public:
-	bool Get( size_t* nElemRemoved, DWORD dwTimeout, BOOL bAlert = FALSE )
-	{
-		return false;
-		//return ::GetQueuedCompletionStatusEx( m_hIoCp, m_pQueueElements, &m_nElementCount, nElemRemoved, dwTimeout, bAlert );
-	}
-
-
-	void Realloc( size_t nCount )
-	{
-		SafeDeleteArray( m_pQueueElements );
-
-		m_pQueueElements = new OVERLAPPED_ENTRY[ nCount ];
-
-		m_nElementCount = nCount;
+		} );
 	}
 
 private:
-	HANDLE	m_hIoCp;
-	size_t	m_nElementCount = 0;
 
 
-	OVERLAPPED_ENTRY*		m_pQueueElements = nullptr;
+	
+	OVERLAPPED_ENTRY*	m_pEntries = new OVERLAPPED_ENTRY[ 1024 ];
+
 };

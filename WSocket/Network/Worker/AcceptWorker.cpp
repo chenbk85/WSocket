@@ -20,23 +20,20 @@ void CAcceptWorker::CreateWorker( )
 {
 	SOCKET hSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
 
+	HANDLE		m_hAcceptIocp = CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
+	CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0, 0 );
+
+
 // 	HANDLE hIoCp = INVALID_HANDLE_VALUE;
 // 
 // 	static const ULONG MAX_OVERLAPPED_RESULTS = 1024;
 // 	OVERLAPPED_ENTRY* pEntries = new OVERLAPPED_ENTRY[ MAX_OVERLAPPED_RESULTS ];
 // 	ULONG nRemoved = 0;
 
-	CThreadHelper t;
 
-	t.Run( [ ]{
-		for( ;; )
-		{
-
-		}
+	m_compQueue.Run( INVALID_HANDLE_VALUE, 100, [ ]( OVERLAPPED_ENTRY* pEntry, size_t nCount ){
+	
 	} );
-
-	//std::thread t = std::thread( [ ]{ } );
-
 
 
 	//m_thread.RunThread( [ & ]{ 
