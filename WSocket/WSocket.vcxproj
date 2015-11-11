@@ -101,6 +101,8 @@
     <ClInclude Include="System\GlobalEnvironment.h" />
     <ClInclude Include="System\Manager\NetManager.h" />
     <ClInclude Include="System\SystemModule.h" />
+    <ClInclude Include="System\Threading\ThreadHost.h" />
+    <ClInclude Include="System\Threading\ThreadManager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User\User.h" />
     <ClInclude Include="User\UserManager.h" />
@@ -124,6 +126,7 @@
     <ClCompile Include="System\GlobalEnvironment.cpp" />
     <ClCompile Include="System\Manager\NetManager.cpp" />
     <ClCompile Include="System\SystemModule.cpp" />
+    <ClCompile Include="System\Threading\ThreadManager.cpp" />
     <ClCompile Include="User\User.cpp" />
     <ClCompile Include="User\UserManager.cpp" />
     <ClCompile Include="WExport\WSocket.cpp" />

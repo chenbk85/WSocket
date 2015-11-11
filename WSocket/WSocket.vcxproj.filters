@@ -50,6 +50,9 @@
     <Filter Include="Profiler\Analyser">
       <UniqueIdentifier>{ee84bf2f-419c-44f8-be89-233e3e1c3139}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Threading">
+      <UniqueIdentifier>{47ec520c-5e4a-4784-8b62-a28748bb5326}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -136,6 +139,12 @@
     <ClInclude Include="Profiler\Analyser\LoadAnalyser.h">
       <Filter>Profiler\Analyser</Filter>
     </ClInclude>
+    <ClInclude Include="System\Threading\ThreadHost.h">
+      <Filter>System\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Threading\ThreadManager.h">
+      <Filter>System\Threading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -179,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="Profiler\ProfileThread.cpp">
       <Filter>Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Threading\ThreadManager.cpp">
+      <Filter>System\Threading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

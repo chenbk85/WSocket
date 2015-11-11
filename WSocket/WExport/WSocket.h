@@ -22,7 +22,7 @@
 
 namespace WSocket
 {
-	WSOCKET_API bool CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl, Internal::INetwork** pOutNetwork );
+	WSOCKET_API bool CreateNetworkInstance( USHORT nPort, INetworkImpl* pNetImpl, _Out_ Internal::INetwork** pOutNetwork );
 	WSOCKET_API void DestroyNetworkInstance( INetworkImpl* pNetImpl );
 
 	//> This should be called every second to update the systems.	

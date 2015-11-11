@@ -8,6 +8,7 @@
 CNetworkModule::CNetworkModule( CNetwork* pNetwork, ISystemModule* pModule )
 	: m_pNetwork( pNetwork ), m_pModule( pModule )
 {
+	//#todo: register module on global system
 }
 
 CNetworkModule::~CNetworkModule( )

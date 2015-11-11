@@ -6,6 +6,8 @@
 
 #include "Helper/ThreadHelper.h"
 
+
+
 CAcceptWorker::CAcceptWorker( CNetwork* pNetwork )
 	: TNetworkModule( pNetwork )
 {
@@ -20,8 +22,10 @@ void CAcceptWorker::CreateWorker( )
 {
 	SOCKET hSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
 
-	HANDLE		m_hAcceptIocp = CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
-	CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0, 0 );
+
+
+	HANDLE		m_hAcceptIocp = WinApi::Io::CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
+	WinApi::Io::CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0, 0 );
 
 
 // 	HANDLE hIoCp = INVALID_HANDLE_VALUE;
@@ -31,8 +35,24 @@ void CAcceptWorker::CreateWorker( )
 // 	ULONG nRemoved = 0;
 
 
-	m_compQueue.Run( INVALID_HANDLE_VALUE, 100, [ ]( OVERLAPPED_ENTRY* pEntry, size_t nCount ){
+	m_compQueue.Run( INVALID_HANDLE_VALUE, 100, [ ]( OVERLAPPED_ENTRY* pEntries, size_t nCount ){
 	
+		for( ULONG i = 0; i < nCount; i++ )
+		{
+			sSocketAccept* pSocket = reinterpret_cast< sSocketAccept* >( pEntries[ i ].lpOverlapped );
+			{
+				//GetServer( )->GetUserManager( )->AddUser( pSocket->m_hSocket, pSocket->GetRemoteAddress( ) );
+			}
+			delete( pSocket );//> add mempool
+		}
+
+		/*
+			if( m_loadAnalyzer.add( nCount ) == eHighLoad )
+			{
+				
+			}
+		*/
+
 	} );
 
 
@@ -105,7 +125,7 @@ void CAcceptWorker::CreateSockets( )
 	SOCKET hServerSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
 
 
-	sSocketAccept* pAcpSocket = new sSocketAccept;
+	sSocketAccept* pAcpSocket = new sSocketAccept; //> add mempool
 	{
 		pAcpSocket->Clear( );
 	}

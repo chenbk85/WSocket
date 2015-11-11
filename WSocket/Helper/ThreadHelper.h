@@ -22,6 +22,11 @@ public:
 	CThreadHelper( )
 	{ }
 
+	~CThreadHelper( )
+	{
+		assert( m_thread.joinable( ) );
+	}
+
 public:
 	template< class _Fn, class... _Args >
 	inline void Run( _Fn&& _Fx, _Args&&... _Ax )
@@ -58,6 +63,17 @@ public:
 
 		::SetThreadPriority( m_thread.native_handle( ), ePriority );
 	}
+
+	inline ULONG64 GetThreadCycleTime( )
+	{
+		assert( m_thread.joinable( ) );
+		
+		ULONG64 nCycleTime = 0;
+		WinApi::Kernel32::QueryThreadCycleTime( m_thread.native_handle( ), &nCycleTime );
+
+		return nCycleTime;
+	}
+
 
 protected:
 	std::thread			m_thread;

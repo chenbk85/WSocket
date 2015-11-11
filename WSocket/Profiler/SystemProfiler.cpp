@@ -51,5 +51,6 @@ void CSystemProfiler::OnUpdate( )
 		}
 	}
 
+	//> #todo: add QueryIdleProcessorCycleTimeEx
 	//wprintf( L"Cpu: %I64d Mem: %lf > %lf\n", m_nCpuLoad.load(), ( ( double )m_nMemoryUsed ) / 1024.0, ( ( double )m_nMemoryFree ) / 1024.0 );
 }

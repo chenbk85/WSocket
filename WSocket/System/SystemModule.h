@@ -3,9 +3,11 @@
 __interface ISystemModule
 {
 	virtual const wchar_t*		GetModuleName( ) = 0;
+	virtual const size_t		GetModuleHash( ) = 0;
 	//virtual void SizeModule( ISizer* pSizer ) = 0;
 	//virtual void OnHandleMessage( eMessage e, void __ptr64* pData ) = 0
 };
+
 
 template< class T >
 class TSystemModule : public ISystemModule
@@ -16,6 +18,8 @@ public:
 		std::string szClassName = typeid( T ).name();
 
 		m_szClassName = char_to_wstring( szClassName.c_str( ) );
+
+		m_nModuleHash = std::hash< std::wstring >()( m_szClassName.c_str() );
 	}
 
 	virtual ~TSystemModule( )
@@ -27,7 +31,14 @@ public:
 		return m_szClassName.c_str( );
 	}
 
+	virtual const size_t GetModuleHash( ) override
+	{
+		return m_nModuleHash;
+	}
+
+
 private:
+	size_t				m_nModuleHash;
 	std::wstring		m_szClassName;
 };
 

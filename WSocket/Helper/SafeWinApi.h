@@ -184,4 +184,42 @@ namespace WinApi
 			}
 		}
 	}
+
+	namespace Io
+	{
+		inline HANDLE CreateIoCompletionPort( HANDLE FileHandle, HANDLE ExistingCompletionPort, ULONG_PTR CompletionKey, DWORD NumberOfConcurrentThreads )
+		{
+			if( FileHandle == INVALID_HANDLE_VALUE && ExistingCompletionPort != nullptr )
+			{
+				throw std::invalid_argument( "ExistingCompletionPort must be nullptr!" );
+			}
+
+			HANDLE hIoCp = ::CreateIoCompletionPort( FileHandle, ExistingCompletionPort, CompletionKey, NumberOfConcurrentThreads );
+			if( hIoCp == nullptr )
+			{
+				throw FormattedException( __FUNCTION__ " failed! LastError %d", GetLastError( ) );
+			}
+
+			if( ExistingCompletionPort != nullptr && ExistingCompletionPort != hIoCp )
+			{
+				throw FormattedException( __FUNCTION__" failed! ExistingCompletionPort is invalid! LastError %d", GetLastError( ) );
+			}
+
+			return hIoCp;
+		}
+	}
+
+	namespace Kernel32
+	{
+		void QueryThreadCycleTime( HANDLE ThreadHandle, _Out_ PULONG64 CycleTime )
+		{
+			BOOL bResult = ::QueryThreadCycleTime( ThreadHandle, CycleTime );
+			{
+				Internal::CheckBOOL_LE( bResult, __FUNCTION__ );
+			}
+		}
+
+
+	}
+
 }

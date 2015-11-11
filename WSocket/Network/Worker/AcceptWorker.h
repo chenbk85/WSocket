@@ -22,6 +22,11 @@ struct sSocketAccept : public OVERLAPPED
 
 class CAcceptWorker : public TNetworkModule< CAcceptWorker >
 {
+	struct sSharedThreadData
+	{
+		void*	m_pMemoryPool;
+	};
+
 public:
 	CAcceptWorker( CNetwork* pNetwork );
 	virtual ~CAcceptWorker( );
@@ -34,4 +39,6 @@ public:
 
 private:
 	CProfileCompThread	m_compQueue;
+
+	//CThreadHost< sSharedThreadData >	m_threadHost;
 };

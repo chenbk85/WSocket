@@ -1,7 +1,19 @@
 #pragma once
 
 
+/*
+	Scale( 0 - 100 ):
 
+	0 - 5		|-> eIdle
+	5 - 70		|-> eAverageLoad
+	70 - 100	|-> eHighLoad
+*/
+
+namespace eLaodState {
+	enum e {
+		eIdle, eAverageLoad, eHighLoad
+	};
+}
 
 
 template< size_t S >

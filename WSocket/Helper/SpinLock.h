@@ -2,6 +2,7 @@
 
 class CSpinLock
 {
+	//#todo: is good value?
 	static const size_t s_nPollLimit = 4000;
 
 public:
@@ -14,7 +15,10 @@ public:
 			{
 				i = 0;
 
-				SwitchToThread( );
+				if( !SwitchToThread( ) )
+				{
+					Sleep( 0 );	//> force new timeslice
+				}
 			}
 		}
 	}

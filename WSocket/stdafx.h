@@ -55,6 +55,7 @@
 #include "Helper/MiscClasses.h"
 #include "Helper/MiscFunctions.h"
 #include "Helper/SafeWinApi.h"
+#include "Helper/ThreadHelper.h"
 
 
 

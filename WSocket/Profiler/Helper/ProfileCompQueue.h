@@ -28,8 +28,11 @@ public:
 				}
 				//> timeout?
 			}
+			else
+			{
+				f( m_pEntries, nCount );
+			}
 
-			f( m_pEntries, nCount );
 
 		} );
 	}
