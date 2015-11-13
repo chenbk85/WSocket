@@ -157,6 +157,9 @@
     <ClInclude Include="Network\Worker\Dispatcher\Dispatcher.h">
       <Filter>Network\Worker\Dispatcher</Filter>
     </ClInclude>
+    <ClInclude Include="Profiler\Helper\FunctionMeasure.h">
+      <Filter>Profiler\Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">

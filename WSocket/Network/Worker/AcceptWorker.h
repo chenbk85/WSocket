@@ -47,6 +47,9 @@ public:
 public:
 	void RefillSockets( );
 
+
+	void OnUpdateModule( );
+
 private:
 	HANDLE		m_hAcceptIocp = WinApi::Io::CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
 

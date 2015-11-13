@@ -7,6 +7,7 @@
 #include "Helper/ThreadHelper.h"
 
 
+#include "Profiler/Helper/FunctionMeasure.h"
 
 
 CAcceptWorker::CAcceptWorker( CNetwork* pNetwork )
@@ -24,7 +25,7 @@ void CAcceptWorker::CreateWorker( )
 	SOCKET hSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
 	WinApi::Io::CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0, 0 );
 
-
+	OnUpdateModule( );
 
 	RefillSockets( );
 
@@ -64,4 +65,14 @@ void CAcceptWorker::RefillSockets( )
 			AddError( L"AcceptEx failed: %d", WSAGetLastError( ) );
 		}
 	}
+}
+
+void CAcceptWorker::OnUpdateModule( )
+{
+	
+	LONGLONG li = CFunctionMeasure::Measure( [ & ]( int n ){
+		RefillSockets( );
+	}, 0 );
+
+	__debugbreak( );
 }
