@@ -51,4 +51,3 @@ inline std::wstring char_to_wstring( const char* szStr )
 }
 
 
-

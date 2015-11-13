@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Helper\MemoryPools\TNodePool.h" />
+    <ClInclude Include="Helper\MemoryPools\TNodePoolChunked.h" />
     <ClInclude Include="Helper\MiscClasses.h" />
     <ClInclude Include="Helper\MiscFunctions.h" />
     <ClInclude Include="Helper\SafeWinApi.h" />

@@ -15,7 +15,7 @@ namespace WSocket
 	{
 		__interface IUser
 		{
-
+			virtual size_t GetId( ) = 0;
 		};
 
 		__interface INetwork

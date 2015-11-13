@@ -1,10 +1,10 @@
 #pragma once
 
-
 #include "System/SystemModule.h"
 
-#include "Profiler/ProfileThread.h"
-#include "Profiler/Helper/ProfileCompQueue.h"
+#include "System/Threading/ThreadHost.h"
+
+
 
 
 struct sSocketAccept : public OVERLAPPED
@@ -13,6 +13,16 @@ struct sSocketAccept : public OVERLAPPED
 	{
 		ZeroMemory( reinterpret_cast< OVERLAPPED* >( this ), sizeof( OVERLAPPED ) );
 		ZeroMemory( m_cIpBuff, sizeof( m_cIpBuff ) );
+	}
+
+	inline sockaddr_in* GetLocalAddress( ) noexcept
+	{
+		return reinterpret_cast< sockaddr_in* >( m_cIpBuff );
+	}
+
+	inline sockaddr_in* GetRemoteAddress( ) noexcept
+	{
+		return reinterpret_cast< sockaddr_in* >( &m_cIpBuff[ sizeof( sockaddr_in ) + 16 ] );
 	}
 
 	SOCKET		m_hSocket;
@@ -38,7 +48,7 @@ public:
 	void CreateSockets( );
 
 private:
-	CProfileCompThread	m_compQueue;
+	HANDLE		m_hAcceptIocp = WinApi::Io::CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
 
-	//CThreadHost< sSharedThreadData >	m_threadHost;
+	CIoThread	m_ioThread;
 };

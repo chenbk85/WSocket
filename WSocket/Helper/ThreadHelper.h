@@ -22,7 +22,7 @@ public:
 	CThreadHelper( )
 	{ }
 
-	~CThreadHelper( )
+	virtual ~CThreadHelper( )
 	{
 		assert( m_thread.joinable( ) );
 	}

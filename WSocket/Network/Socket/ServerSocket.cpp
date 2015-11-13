@@ -40,4 +40,5 @@ void CServerSocket::CreateSocket( USHORT uPort )
 void CServerSocket::ShutdownSocket( )
 {
 	closesocket( m_hSocket );
+
 }

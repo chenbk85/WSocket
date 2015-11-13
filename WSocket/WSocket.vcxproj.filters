@@ -145,6 +145,9 @@
     <ClInclude Include="System\Threading\ThreadManager.h">
       <Filter>System\Threading</Filter>
     </ClInclude>
+    <ClInclude Include="Helper\MemoryPools\TNodePoolChunked.h">
+      <Filter>Helper\MemoryPools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">

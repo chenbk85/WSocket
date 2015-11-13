@@ -10,5 +10,4 @@ CThreadManager::CThreadManager( )
 
 CThreadManager::~CThreadManager( )
 {
-
 }

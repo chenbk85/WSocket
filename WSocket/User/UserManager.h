@@ -8,9 +8,14 @@ class CUserManager : public TNetworkModule< CUserManager >
 {
 public:
 	CUserManager( CNetwork* pNetwork );
-	~CUserManager( );
+	virtual ~CUserManager( );
 
 public:
+	void AddUser( SOCKET hSocket, sockaddr_in* pRemoteAddress );
+
+	CUser* CreateUser( );
+
+
 
 	WSocket::Internal::IUser* GetUserById( size_t nId );
 

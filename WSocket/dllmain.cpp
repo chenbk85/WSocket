@@ -6,7 +6,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD dwReason, LPVOID lpReserved )
 	{
 		if( !IsWindows8OrGreater( ) )
 		{
-			OutputDebugString( L"[WSocket] You need at least Windows 8!" );
+			MessageBox( nullptr, L"[WSocket] You need at least Windows 8!", L"WSocket Error!", MB_OK | MB_ICONERROR );
 			return FALSE;
 		}
 	}
