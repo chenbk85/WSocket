@@ -12,6 +12,13 @@ public:
 	virtual void OnConnect( ) override;
 	virtual void OnDisconnect( ) override;
 
+	virtual void OnSetIUser( WSocket::Internal::IUser* pUser ) override
+	{
+		m_pIUser = pUser;
+	}
+
 public:
+
+	WSocket::Internal::IUser*	m_pIUser = nullptr;
 
 };
