@@ -46,7 +46,7 @@ private:
 
 
 class CNetwork;
-//>#Todo ??{ better idea for resolving the dependency to CNetwork.h? }??
+//>#Maybe ??{ better idea for resolving the dependency to CNetwork.h? }??
 class CNetworkModule
 {
 public:

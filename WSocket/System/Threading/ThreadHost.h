@@ -45,7 +45,7 @@ public:
 
 	void Run( HANDLE hIoPort, std::function< void( OVERLAPPED_ENTRY* pEntries, size_t nCount ) > f)
 	{
-		CThreadHelper::Run( [ & ]{
+		CThreadHelper::Run( [ hIoPort, f, this ]{
 			for( ;; )
 			{
 				ULONG nResult = 0;

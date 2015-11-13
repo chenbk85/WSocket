@@ -93,6 +93,7 @@
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\Socket\ServerSocket.h" />
     <ClInclude Include="Network\Worker\AcceptWorker.h" />
+    <ClInclude Include="Network\Worker\Dispatcher\Dispatcher.h" />
     <ClInclude Include="Profiler\Analyser\LoadAnalyser.h" />
     <ClInclude Include="Profiler\Helper\ProfileCompQueue.h" />
     <ClInclude Include="Profiler\ProfileThread.h" />
@@ -118,6 +119,7 @@
     <ClCompile Include="Network\Network.cpp" />
     <ClCompile Include="Network\Socket\ServerSocket.cpp" />
     <ClCompile Include="Network\Worker\AcceptWorker.cpp" />
+    <ClCompile Include="Network\Worker\Dispatcher\Dispatcher.cpp" />
     <ClCompile Include="Profiler\ProfileThread.cpp" />
     <ClCompile Include="Profiler\SystemProfiler.cpp" />
     <ClCompile Include="stdafx.cpp">

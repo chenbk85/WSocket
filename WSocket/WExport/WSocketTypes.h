@@ -1,7 +1,5 @@
 #pragma once
 
-/*
-*/
 
 namespace WSocket
 {
@@ -10,12 +8,15 @@ namespace WSocket
 	namespace eLogType {
 		enum e { eSuccess, eInfo, eError };
 	}
-	
+
 	namespace Internal
 	{
 		__interface IUser
 		{
-			virtual size_t GetId( ) = 0;
+			//virtual void DropUser( eReason ) = 0;
+
+			virtual const size_t		GetId( ) = 0;
+			virtual const sockaddr_in*	GetRemoteAddress( ) = 0;
 		};
 
 		__interface INetwork
@@ -29,8 +30,11 @@ namespace WSocket
 	__interface IUserImpl
 	{
 		virtual void OnClear( ) = 0;
+
 		virtual void OnConnect( ) = 0;
 		virtual void OnDisconnect( ) = 0;
+
+		virtual void OnSetIUser( WSocket::Internal::IUser* pUser );
 	};
 
 	__interface IDispatcherImpl

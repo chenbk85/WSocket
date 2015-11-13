@@ -19,19 +19,14 @@ CAcceptWorker::~CAcceptWorker( )
 	CloseHandle( m_hAcceptIocp );
 }
 
-
-
 void CAcceptWorker::CreateWorker( )
 {
 	SOCKET hSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
+	WinApi::Io::CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0, 0 );
 
 
 
-
-	WinApi::Io::CreateIoCompletionPort( reinterpret_cast< HANDLE >( hSocket ), m_hAcceptIocp, 0xBEEF, 0 );
-
-	CreateSockets( );
-
+	RefillSockets( );
 
 	m_ioThread.Run( m_hAcceptIocp, [ this ]( OVERLAPPED_ENTRY* pEntries, size_t nCount ){
 		for( size_t i = 0; i < nCount; i++ )
@@ -44,7 +39,7 @@ void CAcceptWorker::CreateWorker( )
 	} );
 }
 
-void CAcceptWorker::CreateSockets( )
+void CAcceptWorker::RefillSockets( )
 {
 	SOCKET hServerSocket = GetNetwork( )->m_pServerSocket->GetSocket( );
 

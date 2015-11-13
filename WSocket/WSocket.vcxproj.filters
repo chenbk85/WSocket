@@ -53,6 +53,12 @@
     <Filter Include="System\Threading">
       <UniqueIdentifier>{47ec520c-5e4a-4784-8b62-a28748bb5326}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network\Worker\IoWorker">
+      <UniqueIdentifier>{9c9b26f4-7c38-47a4-bba3-7458427d77a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Worker\Dispatcher">
+      <UniqueIdentifier>{89afc8be-7092-41f3-a829-f718b291055e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WExport\WSocket.h">
@@ -148,6 +154,9 @@
     <ClInclude Include="Helper\MemoryPools\TNodePoolChunked.h">
       <Filter>Helper\MemoryPools</Filter>
     </ClInclude>
+    <ClInclude Include="Network\Worker\Dispatcher\Dispatcher.h">
+      <Filter>Network\Worker\Dispatcher</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WExport\WSocket.cpp">
@@ -194,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="System\Threading\ThreadManager.cpp">
       <Filter>System\Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Worker\Dispatcher\Dispatcher.cpp">
+      <Filter>Network\Worker\Dispatcher</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

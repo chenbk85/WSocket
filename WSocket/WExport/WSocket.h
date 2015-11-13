@@ -6,6 +6,9 @@
 */
 
 
+#ifndef _M_AMD64
+#error WSocket can only run on x64 systems!
+#endif
 
 
 

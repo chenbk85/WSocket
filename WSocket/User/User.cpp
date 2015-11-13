@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "User.h"
 
-CUser::CUser( )
+CUser::CUser( WSocket::IUserImpl* pUserImpl )
+	: m_pUserImpl( pUserImpl )
 {
-
+	m_pUserImpl->OnSetIUser( this );
 }
 
 CUser::~CUser( )
@@ -11,9 +12,19 @@ CUser::~CUser( )
 
 }
 
-
-
-size_t CUser::GetId( )
+void CUser::BindUser( size_t nId, SOCKET hSocket, sockaddr_in* pRemoteAddr )
 {
-	return m_nId;
+	GetUserImpl( )->OnClear( );
+
+	m_hSocket = hSocket;
+	memcpy( &m_remoteAddress, pRemoteAddr, sizeof( sockaddr_in ) );
+
+
+	GetUserImpl( )->OnConnect( );
+
+
 }
+
+
+
+

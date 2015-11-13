@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Network.h"
 
+#include "User/User.h"
+
+
+
 CNetwork::CNetwork( WSocket::INetworkImpl* pNetImpl )
 	: m_pNetImpl( pNetImpl )
 {

@@ -30,7 +30,7 @@ struct sSocketAccept : public OVERLAPPED
 };
 
 
-class CAcceptWorker : public TNetworkModule< CAcceptWorker >
+class CAcceptWorker : public TNetworkModule< CAcceptWorker > //public IUpdateImpl
 {
 	struct sSharedThreadData
 	{
@@ -45,7 +45,7 @@ public:
 	void CreateWorker( );
 
 public:
-	void CreateSockets( );
+	void RefillSockets( );
 
 private:
 	HANDLE		m_hAcceptIocp = WinApi::Io::CreateIoCompletionPort( INVALID_HANDLE_VALUE, nullptr, 0, 0 );
